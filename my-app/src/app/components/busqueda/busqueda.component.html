@@ -1,0 +1,32 @@
+<div class="form-group">
+  <label for="busqueda">Búsqueda de Restaurante</label>
+  <!--<input type="search" #cajabusqueda (keyup)="busqueda1()" /(keydown.enter)="busqueda2()" (search)="busqueda3()" class="form-control" id="busqueda" name="busqueda" aria-describedby="busqueda" placeholder="Intro nombre barrio o especialidad"-->
+  <input
+    type="search"
+    #cajabusqueda
+    (keyup)="busqueda1()"
+    class="form-control"
+    id="busqueda"
+    name="busqueda"
+    aria-describedby="busqueda"
+    placeholder="Intro nombre barrio o especialidad"
+  />
+</div>
+
+<ul class="list-group" *ngIf="listaRestaurantes">
+  <li class="list-group-item active">Lista de Restaurantes</li>
+</ul>
+<br />
+<a
+  (click)="restaurateTocado(rest)"
+  class="list-group-item list-group-item-action"
+  *ngFor="let rest of listaRestaurantes"
+  >{{ rest.nombre }} {{ rest.barrio }} {{ rest.especialidad1 }}
+  {{ rest.especialidad2 }} {{ rest.especialidad3 }}
+  <button class="btn btn-primary" (click)="restaurateTocado(rest)">mapa</button>
+</a>
+
+<app-mapa #mapa></app-mapa>
+
+
+<button class="btn btn-primary" (click)="encuentrame()">ENCUENTRAME</button>

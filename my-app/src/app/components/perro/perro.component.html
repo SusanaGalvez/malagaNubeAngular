@@ -1,0 +1,8 @@
+<div  *ngIf="perroWeb" class="d-flex justify-content-center">
+<img alt="Foto Perro" class="img-fluid" src={{perroWeb.message}}>
+<br>Raza mayúsucla {{raza | uppercase}}
+<br>Raza mayúsucla {{raza | lowercase}}
+<br>Raza mayúsucla {{raza | titlecase}}
+<button (click)="damePerro()" class="btn btn-primary">Cargar Perro</button>
+
+</div>

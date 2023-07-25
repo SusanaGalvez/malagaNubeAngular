@@ -1,0 +1,87 @@
+<p>dni works!</p>
+{{ titulo }}
+<br />
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="sin"
+    type="radio"
+    name="prefijo"
+    id="sin"
+    checked
+  />
+  <label class="form-check-label" for="sin"> Sin letra (dni español) </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="0"
+    type="radio"
+    title="selx"
+    name="prefijo"
+    id="X"
+  />
+  <label class="form-check-label" for="x"> X </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    value="1"
+    title="sely"
+    type="radio"
+    name="prefijo"
+    id="Y"
+  />
+  <label class="form-check-label" for="y"> Y </label>
+</div>
+<div class="form-check">
+  <input
+    class="form-check-input"
+    title="selz"
+    value="2"
+    type="radio"
+    name="prefijo"
+    id="Z"
+  />
+  <label class="form-check-label" for="z"> Z </label>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">DNI</span>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Meta su dni"
+    [(ngModel)]="dni"
+  />
+</div>
+
+<button class="btn btn-primary" (click)="calcularLetra()">
+  Calcular Letra
+</button>
+<br />
+<span *ngIf="letra != ''">Su letra es {{ letra }}</span>
+
+<table *ngIf="listaDnis.length > 0" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">PREFIJO</th>
+      <th scope="col">NUMERO</th>
+      <th scope="col">LETRA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dniaux of listaDnis">
+      <td>{{ dniaux.prefijo }}</td>
+      <td>{{ dniaux.numero }}</td>
+      <td>{{ dniaux.letra }}</td>
+    </tr>
+    <!--aquí tengo que mostrar mi lista d dnis :)-->
+  </tbody>
+  <button class="btn btn-secondary" (click)="ordenarPorNumero()">
+    Ordenar Por Numero
+  </button>
+  <button class="btn btn-secondary" (click)="ordenarPorLetra()">
+    Ordenar Por Letra
+  </button>
+</table>

@@ -1,0 +1,217 @@
+<!-- FORMULARIO PLANTILLA TEMPLATE FORMS -->
+<form #formulario_restaurante="ngForm" (ngSubmit)="crearRestaurante()">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input
+      type="text"
+      #nombre="ngModel"
+      [(ngModel)]="restaurante.nombre"
+      class="form-control"
+      id="nombre"
+      name="nombre"
+      placeholder="Intro nombre"
+      required
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div class="alert alert-danger" [hidden]="nombre.pristine || nombre.valid">
+      Nombre obligatorio
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="direccion">Dirección</label>
+    <input
+      type="text"
+      #direccion="ngModel"
+      [(ngModel)]="restaurante.direccion"
+      class="form-control"
+      id="direccion"
+      name="direccion"
+      placeholder="Intro direccion"
+      required
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div
+      class="alert alert-danger"
+      [hidden]="direccion.pristine || direccion.valid"
+    >
+      Direccion obligatoria
+    </div>
+  </div>
+  <br />
+  <!--TODO: MODIFICAR EL BARRIO POR UN DESPLEGABLE/SELECT-->
+  <div class="form-group">
+    <label for="nbarrio">Barrio</label>
+    <select
+      [(ngModel)]="restaurante.barrio"
+      name="nbarrio"
+      id="nbarrio"
+      class="form-control"
+      title="listaBarrios"
+    >
+      <option *ngFor="let barrio of barrios" value="{{ barrio }}">
+        {{ barrio }}
+      </option>
+    </select>
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label for="web">Web</label>
+    <input
+      type="text"
+      #web="ngModel"
+      [(ngModel)]="restaurante.web"
+      class="form-control"
+      id="web"
+      name="web"
+      placeholder="Intro web"
+      required
+      pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div class="alert alert-danger" [hidden]="web.pristine || web.valid">
+      Formato Web incorrecto
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="fichaGoogle">Ficha Google</label>
+    <input
+      type="text"
+      #fichaGoogle="ngModel"
+      [(ngModel)]="restaurante.fichaGoogle"
+      class="form-control"
+      id="fichaGoogle"
+      name="fichaGoogle"
+      placeholder="Intro ficha"
+      required
+      pattern="[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?"
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div
+      class="alert alert-danger"
+      [hidden]="fichaGoogle.pristine || fichaGoogle.valid"
+    >
+      Formato Web incorrecto
+    </div>
+  </div>
+  <br />
+  <!--TODO: VALIDAR SENCILLA LATITUD NUMERO-->
+  <div class="form-group">
+    <label for="latitud">Latitud</label>
+    <input
+      type="number"
+      #latitud="ngModel"
+      [(ngModel)]="restaurante.latitud"
+      class="form-control"
+      id="latitud"
+      name="latitud"
+      placeholder="Latitud"
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div
+      class="alert alert-danger"
+      [hidden]="latitud.pristine || latitud.valid"
+    >
+      Formato Latitud incorrecto
+    </div>
+  </div>
+  <br />
+  <!--TODO: VALIDAR SENCILLA LONGITUD NUMERO-->
+  <div class="form-group">
+    <label for="longitud">Longitud</label>
+    <input
+      type="number"
+      #longitud="ngModel"
+      [(ngModel)]="restaurante.longitud"
+      class="form-control"
+      id="longitud"
+      name="longitud"
+      placeholder="Longitud"
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div
+      class="alert alert-danger"
+      [hidden]="longitud.pristine || longitud.valid"
+    >
+      Formato Longitud incorrecto
+    </div>
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label for="precio">Precio</label>
+    <input
+      type="number"
+      #precio="ngModel"
+      [(ngModel)]="restaurante.precio"
+      class="form-control"
+      id="precio"
+      name="precio"
+      placeholder="Precio"
+      required
+      min="2"
+      max="500"
+    />
+    <!-- definimos una sección de error, que muestre el mensaje si el campo no se valida -->
+    <div class="alert alert-danger" [hidden]="precio.pristine || precio.valid">
+      Formato Web incorrecto
+    </div>
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="especialidad1">Especialidad 1</label>
+    <input
+      type="text"
+      #especialidad1="ngModel"
+      [(ngModel)]="restaurante.especialidad1"
+      class="form-control"
+      id="especialidad1"
+      name="especialidad1"
+      placeholder="Especialidad 1"
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="especialidad2">Especialidad 2</label>
+    <input
+      type="text"
+      #especialidad2="ngModel"
+      [(ngModel)]="restaurante.especialidad2"
+      class="form-control"
+      id="especialidad2"
+      name="especialidad2"
+      placeholder="Especialidad 2"
+    />
+  </div>
+  <br />
+  <div class="form-group">
+    <label for="especialidad3">Especialidad 3</label>
+    <input
+      type="text"
+      #especialidad3="ngModel"
+      [(ngModel)]="restaurante.especialidad3"
+      class="form-control"
+      id="especialidad3"
+      name="especialidad3"
+      placeholder="Especialidad 3"
+    />
+  </div>
+
+  <br />
+
+  <div class="form-group">
+    <label for="foto">Foto</label>
+    <input
+      type="file"
+      (change)="seleccionarFoto($event)"
+      class="form-control"
+      id="foto"
+      name="foto"
+    />
+  </div>
+
+  <br />
+  <button type="submit" class="btn btn-primary">CREAR</button>
+</form>

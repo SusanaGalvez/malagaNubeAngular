@@ -1,0 +1,17 @@
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">CADENA</span>
+    <input type="text"  class="form-control" placeholder="Intro una cadena" (keyup)="darLaVuelta()" [(ngModel)]="cadenaUsuario" >
+  </div>
+
+<div *ngIf="cadenaReves!=''" class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">ANEDAC</span>
+    <input type="text"  class="form-control" placeholder="Cadena revés" value="{{cadenaReves}}" >
+    <br>
+    <span class="input-group-text" id="basic-addon1">LONGITUD</span>
+    <input type="text"  class="form-control" placeholder="Longitud" value="{{cadenaReves.length}}" >
+    <span *ngIf="cadenaReves.length%2==0" class="input-group-text" id="basic-addon1">ESPAR</span>
+    <span *ngIf="cadenaReves.length%2!=0" class="input-group-text" id="basic-addon1">ES IMPAR</span>
+</div>
+
+

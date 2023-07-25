@@ -1,0 +1,65 @@
+<h1 class="rest_titulo">Lista de Restaurantes - Málaga</h1>
+<br />
+<button class="btn btn-success" routerLink="/restaurantes/nuevo">CREAR</button>
+<br />
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let restaurante of lista_restaurantes">
+      <div class="card rest_card">
+
+        <!--si fotoHashCode es distinto de nulo, cargamos la foto del restaurante-->
+        <!-- <img
+          *ngIf="restaurante.fotoHashCode"
+          src="http://localhost:8081/restaurante/obtenerFoto/{{
+            restaurante.id
+          }}"
+          class="card_img"
+          alt="..."
+        /> -->
+
+        <img
+          *ngIf="restaurante.fotoHashCode"
+          src="{{ ruta_servicio_foto }}/{{ restaurante.id }}"
+          class="card_img"
+          alt="..."
+        />
+
+        <!--si fotoHashCode es nulo, cargamos la foto por defecto-->
+        <img
+          *ngIf="!restaurante.fotoHashCode"
+          src="/assets/imgrest.jpg"
+          class="card_img"
+          alt="..."
+        />
+
+        
+        <div class="card-body">
+          <img src="/assets/favicon.png" class="card_logo" alt="..." />
+          <div>
+            <h1 class="card_title rest_nombre">{{ restaurante.nombre }}</h1>
+            <p class="card_text rest_direccion">{{ restaurante.direccion }}</p>
+            <p class="card_text rest_barrio">{{ restaurante.barrio }}</p>
+            <a href="#" class="btn btn-warning rest_button"
+              >Entra en el restaurante</a
+            >
+            <button class="btn btn-danger" (click)="borrarRestaurante()">
+              Borrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--aquí va la mpaginación -->
+    <mat-paginator
+      [length]="totalRegistros"
+      [pageSize]="totalPorPagina"
+      [pageSizeOptions]="opcionesTamanio"
+      [pageIndex]="paginaActual"
+      aria-label="Select page"
+      showFirstLastButtons
+      (page)="paginar($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>
